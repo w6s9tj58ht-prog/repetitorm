@@ -267,6 +267,37 @@
             background: linear-gradient(135deg, rgba(200, 80, 120, 0.95), rgba(180, 60, 100, 0.95));
         }
 
+        /* ===== ССЫЛКА НА ТЕЛЕГРАМ (новая кнопка) ===== */
+        .telegram-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #0088cc, #005f8c);
+            color: white;
+            padding: 16px 40px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+            margin-top: 15px;
+            box-shadow: 0 6px 30px rgba(0, 136, 204, 0.3);
+        }
+
+        .telegram-link:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 40px rgba(0, 136, 204, 0.5);
+            background: linear-gradient(135deg, #006699, #004466);
+        }
+
+        .notice {
+            background: rgba(255, 200, 200, 0.15);
+            border: 1px solid rgba(200, 100, 100, 0.2);
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            color: #7a4a5a;
+        }
+
         .footer {
             text-align: center;
             padding: 25px 20px;
@@ -302,6 +333,10 @@
             .float-item {
                 font-size: 1rem !important;
                 opacity: 0.3 !important;
+            }
+            .telegram-link {
+                display: block;
+                text-align: center;
             }
         }
     </style>
@@ -378,9 +413,24 @@
 
         <section class="section" id="contact">
             <h2>Запишитесь на бесплатное занятие</h2>
-            <p style="margin-bottom: 20px; font-size: 1.05rem;">
-                На первом занятии мы познакомимся, определим ваш текущий уровень 
-                и составим план подготовки. <strong>Это абсолютно бесплатно!</strong>
+
+            <!-- ===== ПРЕДУПРЕЖДЕНИЕ ДЛЯ БРАУЗЕРА ===== -->
+            <div class="notice">
+                ⚡ <strong>Важно!</strong> Если вы открыли сайт в браузере, заявка может не отправиться. 
+                <br>👉 <strong>Нажмите кнопку ниже</strong>, чтобы записаться через Telegram (это быстро и удобно!).
+            </div>
+
+            <!-- ===== КНОПКА "ЗАПИСАТЬСЯ ЧЕРЕЗ TELEGRAM" ===== -->
+            <div style="text-align: center; margin-bottom: 25px;">
+                <a href="https://t.me/obrepetbot" target="_blank" class="telegram-link">
+                    📱 Записаться через Telegram
+                </a>
+            </div>
+
+            <hr style="border: none; border-top: 1px solid rgba(200, 130, 160, 0.2); margin: 20px 0;">
+
+            <p style="margin-bottom: 20px; font-size: 1.05rem; text-align: center; color: #7a5a6a;">
+                ⬇️ Или заполните форму (если вы открыли сайт через Telegram)
             </p>
 
             <form id="contactForm" onsubmit="handleFormSubmit(event)">
@@ -406,7 +456,12 @@
         </section>
 
         <footer class="footer">
-            <p>© 2026 Михайлова Полина Александровна — Репетитор по обществознанию</p>
+            <p>
+                <a href="https://t.me/obrepetbot" target="_blank" style="color: #0088cc; text-decoration: none; font-weight: 600;">
+                    📱 Записаться через Telegram
+                </a>
+            </p>
+            <p style="margin-top: 10px;">© 2026 Михайлова Полина Александровна — Репетитор по обществознанию</p>
         </footer>
 
     </div>
@@ -431,7 +486,7 @@
         statusDiv.style.color = '#6d3350';
 
         // ============================================================
-        // 🔑 ВАШИ ДАННЫЕ (уже вставлены!):
+        // 🔑 ВАШИ ДАННЫЕ:
         // ============================================================
         const BOT_TOKEN = '8620466833:AAHo1kdaZDlT6KKTVNowSeyeYF9wsfWkDiA';
         const CHAT_ID = '7055439704';
@@ -469,7 +524,7 @@
         })
         .catch(error => {
             console.error('Ошибка:', error);
-            statusDiv.innerHTML = `❌ Не удалось отправить заявку. Ошибка: ${error.message}`;
+            statusDiv.innerHTML = `❌ Не удалось отправить заявку. Напишите мне в Telegram: @polettaaa`;
             statusDiv.style.color = '#b04a6a';
         });
     }
