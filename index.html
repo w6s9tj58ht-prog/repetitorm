@@ -450,26 +450,13 @@
             statusDiv.style.color = '#6d3350';
 
             // ============================================================
-            // ⚠️ ВНИМАНИЕ! СЮДА ВСТАВЬТЕ СВОИ ДАННЫЕ:
+            // 🔑 ВСТАВЬТЕ ВАШИ ДАННЫЕ СЮДА:
             // ============================================================
-            
-            // 👇 Ваш токен от @BotFather (полностью)
-            const BOT_TOKEN = '8620466833:AAHo1kdaZDlT6KKTVNowSeyeYF9wsfWkDiA';   // ← ВСТАВЬТЕ СЮДА ВЕСЬ ТОКЕН
-            
-            // 👇 Ваш CHAT_ID (только цифры)
-            const CHAT_ID = '7055439704';                // ← ВСТАВЬТЕ СЮДА ТОЛЬКО ЦИФРЫ
-
+            const BOT_TOKEN = '8620466833:AAHo1kdaZDlT6KKTVNowSeyeYF9wsfWkDiA';   // ← ВЕСЬ ТОКЕН
+            const CHAT_ID = '7055439704';                // ← ТОЛЬКО ЦИФРЫ
             // ============================================================
 
             const textMessage = `🔔 Новая заявка с сайта!%0A%0A👤 Имя: ${name}%0A📱 Телефон/Telegram: ${phone}%0A📝 Комментарий: ${message || 'Не указан'}`;
-
-            // Проверка: если данные не заменены — показать подсказку
-            if (BOT_TOKEN === '8620466833:AAHo1k...' || CHAT_ID === '987654321') {
-                statusDiv.innerHTML = '⚠️ Настройка Telegram не выполнена. Замените BOT_TOKEN и CHAT_ID в коде.';
-                statusDiv.style.color = '#b04a6a';
-                console.log('📝 Тестовые данные (ничего не отправлено):', { name, phone, message });
-                return;
-            }
 
             const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
             const params = {
