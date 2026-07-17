@@ -6,7 +6,6 @@
     <title>Репетитор по обществознанию | Михайлова Полина</title>
     <meta name="description" content="Подготовка к ЕГЭ и ОГЭ по обществознанию. Индивидуальный подход, высокие результаты. Первое занятие — бесплатно!">
     <style>
-        /* ===== БАЗА ===== */
         * {
             margin: 0;
             padding: 0;
@@ -22,7 +21,6 @@
             position: relative;
         }
 
-        /* ===== РАСПЛЫВЧАТЫЙ ФОН ===== */
         body::before {
             content: '';
             position: fixed;
@@ -59,7 +57,6 @@
             z-index: 2;
         }
 
-        /* ===== ПЛАВАЮЩИЕ ФРАЗЫ ===== */
         .floating-texts {
             position: fixed;
             top: 0;
@@ -99,7 +96,6 @@
             100% { transform: translate(-10px, 15px) rotate(-1deg) scale(1); opacity: 0.4; }
         }
 
-        /* ===== ШАПКА ===== */
         .hero {
             background: transparent;
             padding: 30px 20px 25px;
@@ -135,7 +131,6 @@
             font-weight: 700;
         }
 
-        /* ===== СЕКЦИИ ===== */
         .section {
             background: rgba(255, 248, 250, 0.55);
             backdrop-filter: blur(16px);
@@ -163,7 +158,6 @@
             font-weight: 600;
         }
 
-        /* ===== ПРЕИМУЩЕСТВА ===== */
         .benefits-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -188,7 +182,6 @@
             margin-bottom: 8px;
         }
 
-        /* ===== ЦЕНЫ ===== */
         .price-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -215,7 +208,6 @@
             color: #7a5a6a;
         }
 
-        /* ===== ФОРМА ===== */
         .form-group {
             margin-bottom: 18px;
         }
@@ -275,7 +267,6 @@
             background: linear-gradient(135deg, rgba(200, 80, 120, 0.95), rgba(180, 60, 100, 0.95));
         }
 
-        /* ===== ПОДВАЛ ===== */
         .footer {
             text-align: center;
             padding: 25px 20px;
@@ -289,7 +280,6 @@
             border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
-        /* ===== АДАПТИВ ===== */
         @media (max-width: 600px) {
             .hero h1 {
                 font-size: 1.9rem;
@@ -318,7 +308,6 @@
 </head>
 <body>
 
-    <!-- ===== ПЛАВАЮЩИЕ ФРАЗЫ ===== -->
     <div class="floating-texts">
         <div class="float-item">🔥 Первое занятие — бесплатно!</div>
         <div class="float-item">🎯 Поступление на бюджет — реально!</div>
@@ -332,14 +321,12 @@
 
     <div class="container">
 
-        <!-- ===== ШАПКА ===== -->
         <header class="hero">
             <p class="subtitle">👩‍🏫 Репетитор по обществознанию</p>
             <h1>Михайлова Полина Александровна</h1>
             <div class="tagline">🔥 Первое занятие — бесплатно!</div>
         </header>
 
-        <!-- ===== ПРЕИМУЩЕСТВА ===== -->
         <section class="section">
             <h2>Почему выбирают меня?</h2>
             <div class="benefits-grid">
@@ -350,7 +337,6 @@
             </div>
         </section>
 
-        <!-- ===== О СЕБЕ ===== -->
         <section class="section">
             <h2>Немного обо мне</h2>
             <p style="font-size: 1.1rem; font-weight: 500; color: #6d3350;">
@@ -369,7 +355,6 @@
             </p>
         </section>
 
-        <!-- ===== УСЛУГИ И ЦЕНЫ ===== -->
         <section class="section">
             <h2>Услуги и стоимость</h2>
             <div class="price-grid">
@@ -391,7 +376,6 @@
             </p>
         </section>
 
-        <!-- ===== ФОРМА ===== -->
         <section class="section" id="contact">
             <h2>Запишитесь на бесплатное занятие</h2>
             <p style="margin-bottom: 20px; font-size: 1.05rem;">
@@ -421,70 +405,74 @@
             <div id="formStatus" style="margin-top: 15px; text-align: center; font-weight: 600;"></div>
         </section>
 
-        <!-- ===== ПОДВАЛ ===== -->
         <footer class="footer">
             <p>© 2026 Михайлова Полина Александровна — Репетитор по обществознанию</p>
         </footer>
 
     </div>
 
-    <!-- ============================================================ -->
-    <!-- ===== СКРИПТ ДЛЯ ОТПРАВКИ ЗАЯВОК В TELEGRAM ===== -->
-    <!-- ============================================================ -->
     <script>
-        function handleFormSubmit(event) {
-            event.preventDefault();
+    function handleFormSubmit(event) {
+        event.preventDefault();
 
-            const name = document.getElementById('name').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const message = document.getElementById('message').value.trim();
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const message = document.getElementById('message').value.trim();
 
-            if (!name || !phone) {
-                document.getElementById('formStatus').innerHTML = '⚠️ Пожалуйста, заполните имя и телефон.';
-                document.getElementById('formStatus').style.color = '#b04a6a';
-                return;
-            }
+        const statusDiv = document.getElementById('formStatus');
 
-            const statusDiv = document.getElementById('formStatus');
-            statusDiv.innerHTML = '⏳ Отправляем заявку...';
-            statusDiv.style.color = '#6d3350';
-
-            // ============================================================
-            // 🔑 ВСТАВЬТЕ ВАШИ ДАННЫЕ СЮДА:
-            // ============================================================
-            const BOT_TOKEN = '8620466833:AAHo1kdaZDlT6KKTVNowSeyeYF9wsfWkDiA';   // ← ВЕСЬ ТОКЕН
-            const CHAT_ID = '7055439704';                // ← ТОЛЬКО ЦИФРЫ
-            // ============================================================
-
-            const textMessage = `🔔 Новая заявка с сайта!%0A%0A👤 Имя: ${name}%0A📱 Телефон/Telegram: ${phone}%0A📝 Комментарий: ${message || 'Не указан'}`;
-
-            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-            const params = {
-                chat_id: CHAT_ID,
-                text: textMessage,
-                parse_mode: 'HTML'
-            };
-
-            fetch(url, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(params)
-            })
-            .then(response => {
-                if (response.ok) {
-                    statusDiv.innerHTML = '✅ Заявка успешно отправлена! Я свяжусь с вами в ближайшее время.';
-                    statusDiv.style.color = '#2e7d32';
-                    document.getElementById('contactForm').reset();
-                } else {
-                    throw new Error('Ошибка сервера');
-                }
-            })
-            .catch(error => {
-                console.error('Ошибка:', error);
-                statusDiv.innerHTML = '❌ Не удалось отправить заявку. Напишите мне в Telegram: @polettaaa';
-                statusDiv.style.color = '#b04a6a';
-            });
+        if (!name || !phone) {
+            statusDiv.innerHTML = '⚠️ Пожалуйста, заполните имя и телефон.';
+            statusDiv.style.color = '#b04a6a';
+            return;
         }
+
+        statusDiv.innerHTML = '⏳ Отправляем заявку...';
+        statusDiv.style.color = '#6d3350';
+
+        // ============================================================
+        // 🔑 ВАШИ ДАННЫЕ (уже вставлены!):
+        // ============================================================
+        const BOT_TOKEN = '8620466833:AAHo1kdaZDlT6KKTVNowSeyeYF9wsfWkDiA';
+        const CHAT_ID = '7055439704';
+        // ============================================================
+
+        const text = `🔔 Новая заявка с сайта!\n\n👤 Имя: ${name}\n📱 Телефон/Telegram: ${phone}\n📝 Комментарий: ${message || 'Не указан'}`;
+
+        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                chat_id: CHAT_ID,
+                text: text,
+                parse_mode: 'HTML'
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => { throw new Error(err.description || 'Ошибка отправки'); });
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.ok) {
+                statusDiv.innerHTML = '✅ Заявка успешно отправлена! Я свяжусь с вами в ближайшее время.';
+                statusDiv.style.color = '#2e7d32';
+                document.getElementById('contactForm').reset();
+            } else {
+                throw new Error(data.description || 'Неизвестная ошибка');
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+            statusDiv.innerHTML = `❌ Не удалось отправить заявку. Ошибка: ${error.message}`;
+            statusDiv.style.color = '#b04a6a';
+        });
+    }
     </script>
 
 </body>
