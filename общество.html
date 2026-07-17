@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Репетитор по обществознанию | Михайлова Полина</title>
+    <meta name="description" content="Подготовка к ЕГЭ и ОГЭ по обществознанию. Индивидуальный подход, высокие результаты. Первое занятие — бесплатно!">
+    <style>
+        /* ===== БАЗА ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            background: #f5edf0;
+            color: #3d2a33;
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* ===== РАСПЛЫВЧАТЫЙ ФОН ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -20%;
+            left: -20%;
+            width: 70%;
+            height: 70%;
+            background: radial-gradient(circle, rgba(244, 182, 200, 0.4) 0%, rgba(255, 215, 225, 0.1) 70%, transparent 100%);
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -20%;
+            right: -20%;
+            width: 70%;
+            height: 70%;
+            background: radial-gradient(circle, rgba(232, 150, 180, 0.35) 0%, rgba(255, 200, 215, 0.1) 70%, transparent 100%);
+            border-radius: 50%;
+            filter: blur(90px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 20px 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ===== ПЛАВАЮЩИЕ ФРАЗЫ ===== */
+        .floating-texts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .float-item {
+            position: absolute;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: rgba(200, 130, 160, 0.15);
+            white-space: nowrap;
+            animation: floatAround 25s infinite alternate ease-in-out;
+            letter-spacing: 1px;
+            font-style: italic;
+        }
+
+        .float-item:nth-child(1) { top: 5%; left: 2%; animation-duration: 22s; font-size: 1.8rem; }
+        .float-item:nth-child(2) { top: 16%; right: 1%; animation-duration: 18s; animation-delay: 2s; }
+        .float-item:nth-child(3) { top: 30%; left: 1%; animation-duration: 26s; animation-delay: 4s; font-size: 1.6rem; }
+        .float-item:nth-child(4) { top: 48%; right: 1%; animation-duration: 20s; animation-delay: 1s; }
+        .float-item:nth-child(5) { top: 62%; left: 2%; animation-duration: 23s; animation-delay: 3s; font-size: 1.7rem; }
+        .float-item:nth-child(6) { top: 78%; right: 2%; animation-duration: 19s; animation-delay: 5s; }
+        .float-item:nth-child(7) { top: 90%; left: 4%; animation-duration: 21s; animation-delay: 2s; }
+        .float-item:nth-child(8) { top: 50%; left: 50%; transform: translateX(-50%); animation-duration: 28s; animation-delay: 0s; font-size: 2.2rem; color: rgba(200, 130, 160, 0.12); }
+
+        @keyframes floatAround {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.4; }
+            25% { transform: translate(30px, -20px) rotate(2deg) scale(1.05); opacity: 0.7; }
+            50% { transform: translate(-20px, 25px) rotate(-2deg) scale(0.95); opacity: 0.5; }
+            75% { transform: translate(15px, -10px) rotate(3deg) scale(1.03); opacity: 0.8; }
+            100% { transform: translate(-10px, 15px) rotate(-1deg) scale(1); opacity: 0.4; }
+        }
+
+        /* ===== ШАПКА ===== */
+        .hero {
+            background: transparent;
+            padding: 30px 20px 25px;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero .subtitle {
+            font-size: 1rem;
+            color: #9a6a7a;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #3d1f2b;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+            display: inline-block;
+            padding: 8px 25px;
+            margin-top: 10px;
+            color: #b04a6a;
+            font-weight: 700;
+        }
+
+        /* ===== СЕКЦИИ ===== */
+        .section {
+            background: rgba(255, 248, 250, 0.55);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 35px 30px;
+            border-radius: 24px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 35px rgba(200, 130, 160, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            z-index: 2;
+            transition: transform 0.2s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-2px);
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            color: #6d3350;
+            margin-bottom: 20px;
+            border-left: 5px solid rgba(200, 100, 140, 0.5);
+            padding-left: 18px;
+            font-weight: 600;
+        }
+
+        /* ===== ПРЕИМУЩЕСТВА ===== */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .benefit-item {
+            background: rgba(255, 240, 245, 0.6);
+            backdrop-filter: blur(8px);
+            padding: 20px 15px;
+            border-radius: 16px;
+            text-align: center;
+            font-weight: 500;
+            color: #4a2c3a;
+            border: 1px solid rgba(232, 135, 168, 0.12);
+        }
+
+        .benefit-item span {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* ===== ЦЕНЫ ===== */
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .price-card {
+            background: rgba(255, 245, 248, 0.6);
+            backdrop-filter: blur(8px);
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(232, 135, 168, 0.12);
+        }
+
+        .price-card .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #b04a6a;
+        }
+
+        .price-card .label {
+            font-size: 0.9rem;
+            color: #7a5a6a;
+        }
+
+        /* ===== ФОРМА ===== */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+            color: #4a2c3a;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid rgba(232, 135, 168, 0.2);
+            border-radius: 14px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s;
+            background: rgba(255, 250, 252, 0.6);
+            backdrop-filter: blur(8px);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #d46a8e;
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 0 0 5px rgba(212, 106, 142, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, rgba(212, 106, 142, 0.85), rgba(200, 80, 120, 0.85));
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 6px 30px rgba(212, 106, 142, 0.2);
+        }
+
+        .btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 40px rgba(212, 106, 142, 0.35);
+            background: linear-gradient(135deg, rgba(200, 80, 120, 0.95), rgba(180, 60, 100, 0.95));
+        }
+
+        /* ===== ПОДВАЛ ===== */
+        .footer {
+            text-align: center;
+            padding: 25px 20px;
+            color: #9a7a8a;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 248, 250, 0.25);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .hero .subtitle {
+                font-size: 0.8rem;
+            }
+            .section {
+                padding: 20px 15px;
+            }
+            .section h2 {
+                font-size: 1.4rem;
+            }
+            .benefits-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .price-grid {
+                grid-template-columns: 1fr;
+            }
+            .float-item {
+                font-size: 1rem !important;
+                opacity: 0.3 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== ПЛАВАЮЩИЕ ФРАЗЫ ===== -->
+    <div class="floating-texts">
+        <div class="float-item">🔥 Первое занятие — бесплатно!</div>
+        <div class="float-item">🎯 Поступление на бюджет — реально!</div>
+        <div class="float-item">📈 Результат за 3 недели</div>
+        <div class="float-item">💡 Сдам ЕГЭ на 90+?</div>
+        <div class="float-item">🚀 Успех начинается здесь</div>
+        <div class="float-item">✨ Превращаю страх в уверенность</div>
+        <div class="float-item">🏆 Я поведу тебя к цели</div>
+        <div class="float-item">❤️ Обществознание — это просто!</div>
+    </div>
+
+    <div class="container">
+
+        <!-- ===== ШАПКА ===== -->
+        <header class="hero">
+            <p class="subtitle">👩‍🏫 Репетитор по обществознанию</p>
+            <h1>Михайлова Полина Александровна</h1>
+            <div class="tagline">🔥 Первое занятие — бесплатно!</div>
+        </header>
+
+        <!-- ===== ПРЕИМУЩЕСТВА ===== -->
+        <section class="section">
+            <h2>Почему выбирают меня?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item"><span>🎯</span> Индивидуальный план под тебя</div>
+                <div class="benefit-item"><span>📊</span> Разбор реальных заданий ЕГЭ</div>
+                <div class="benefit-item"><span>💡</span> Авторские схемы и таблицы</div>
+                <div class="benefit-item"><span>📈</span> Гарантированный прогресс</div>
+            </div>
+        </section>
+
+        <!-- ===== О СЕБЕ ===== -->
+        <section class="section">
+            <h2>Немного обо мне</h2>
+            <p style="font-size: 1.1rem; font-weight: 500; color: #6d3350;">
+                ✨ «Обществознание — это не зубрежка, это ключ к пониманию мира. 
+                Я научу тебя видеть логику там, где другие видят хаос.»
+            </p>
+            <p style="margin-top: 15px; font-size: 1.05rem;">
+                Моя миссия — не просто подготовить к экзамену, а <strong>влюбить в предмет</strong>. 
+                Я знаю, как превратить сложные темы в увлекательные истории, а подготовку — 
+                в захватывающий квест к высоким баллам. 
+                Со мной ты перестанешь бояться и начнешь <strong>побеждать</strong>.
+            </p>
+            <p style="margin-top: 15px; background: rgba(255, 240, 245, 0.4); padding: 15px 20px; border-radius: 14px; border-left: 4px solid rgba(200, 100, 140, 0.4); backdrop-filter: blur(8px);">
+                📌 <strong>Мой девиз:</strong> «Успех — это не случайность. Это результат правильной стратегии 
+                и веры в себя. А я помогу тебе найти эту стратегию».
+            </p>
+        </section>
+
+        <!-- ===== УСЛУГИ И ЦЕНЫ ===== -->
+        <section class="section">
+            <h2>Услуги и стоимость</h2>
+            <div class="price-grid">
+                <div class="price-card">
+                    <div class="price">1 500 ₽</div>
+                    <div class="label">60 минут — индивидуально</div>
+                </div>
+                <div class="price-card">
+                    <div class="price">2 500 ₽</div>
+                    <div class="label">90 минут — индивидуально</div>
+                </div>
+                <div class="price-card">
+                    <div class="price">1 000 ₽</div>
+                    <div class="label">60 минут — в мини-группе (2-3 чел.)</div>
+                </div>
+            </div>
+            <p style="margin-top: 15px; text-align: center; color: #b04a6a; font-weight: 600;">
+                🎁 При оплате абонемента на 8 занятий — скидка 10%
+            </p>
+        </section>
+
+        <!-- ===== ФОРМА ===== -->
+        <section class="section" id="contact">
+            <h2>Запишитесь на бесплатное занятие</h2>
+            <p style="margin-bottom: 20px; font-size: 1.05rem;">
+                На первом занятии мы познакомимся, определим ваш текущий уровень 
+                и составим план подготовки. <strong>Это абсолютно бесплатно!</strong>
+            </p>
+
+            <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Ваше имя</label>
+                    <input type="text" id="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Телефон или Telegram</label>
+                    <input type="text" id="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Что нужно подтянуть?</label>
+                    <textarea id="message"></textarea>
+                </div>
+
+                <button type="submit" class="btn">✉️ Отправить заявку</button>
+            </form>
+
+            <div id="formStatus" style="margin-top: 15px; text-align: center; font-weight: 600;"></div>
+        </section>
+
+        <!-- ===== ПОДВАЛ ===== -->
+        <footer class="footer">
+            <p>© 2026 Михайлова Полина Александровна — Репетитор по обществознанию</p>
+        </footer>
+
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ===== СКРИПТ ДЛЯ ОТПРАВКИ ЗАЯВОК В TELEGRAM ===== -->
+    <!-- ============================================================ -->
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !phone) {
+                document.getElementById('formStatus').innerHTML = '⚠️ Пожалуйста, заполните имя и телефон.';
+                document.getElementById('formStatus').style.color = '#b04a6a';
+                return;
+            }
+
+            const statusDiv = document.getElementById('formStatus');
+            statusDiv.innerHTML = '⏳ Отправляем заявку...';
+            statusDiv.style.color = '#6d3350';
+
+            // ============================================================
+            // ⚠️ ВНИМАНИЕ! СЮДА ВСТАВЬТЕ СВОИ ДАННЫЕ:
+            // ============================================================
+            
+            // 👇 Ваш токен от @BotFather (полностью)
+            const BOT_TOKEN = '8620466833:AAHo1k...';   // ← ВСТАВЬТЕ СЮДА ВЕСЬ ТОКЕН
+            
+            // 👇 Ваш CHAT_ID (только цифры)
+            const CHAT_ID = '987654321';                // ← ВСТАВЬТЕ СЮДА ТОЛЬКО ЦИФРЫ
+
+            // ============================================================
+
+            const textMessage = `🔔 Новая заявка с сайта!%0A%0A👤 Имя: ${name}%0A📱 Телефон/Telegram: ${phone}%0A📝 Комментарий: ${message || 'Не указан'}`;
+
+            // Проверка: если данные не заменены — показать подсказку
+            if (BOT_TOKEN === '8620466833:AAHo1k...' || CHAT_ID === '987654321') {
+                statusDiv.innerHTML = '⚠️ Настройка Telegram не выполнена. Замените BOT_TOKEN и CHAT_ID в коде.';
+                statusDiv.style.color = '#b04a6a';
+                console.log('📝 Тестовые данные (ничего не отправлено):', { name, phone, message });
+                return;
+            }
+
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+            const params = {
+                chat_id: CHAT_ID,
+                text: textMessage,
+                parse_mode: 'HTML'
+            };
+
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(params)
+            })
+            .then(response => {
+                if (response.ok) {
+                    statusDiv.innerHTML = '✅ Заявка успешно отправлена! Я свяжусь с вами в ближайшее время.';
+                    statusDiv.style.color = '#2e7d32';
+                    document.getElementById('contactForm').reset();
+                } else {
+                    throw new Error('Ошибка сервера');
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                statusDiv.innerHTML = '❌ Не удалось отправить заявку. Напишите мне в Telegram: @polettaaa';
+                statusDiv.style.color = '#b04a6a';
+            });
+        }
+    </script>
+
+</body>
+</html>
